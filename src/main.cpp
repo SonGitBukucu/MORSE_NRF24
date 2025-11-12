@@ -2,9 +2,9 @@
  * Morse Code Receiver (No Display)
  * Reads Morse key input and prints decoded characters via Serial
  */
-
+#include <Arduino.h>
 #include <TimerOne.h>
-
+#include <Adafruit_SSD1306.h>
 // === Pin and timing variables ===
 const byte inputPin = 9;       // Analog input from telegraph key or radio output
 
@@ -53,10 +53,10 @@ void loop() {
 
 // === Interrupt Service Routine (ISR) ===
 void trackSignal() {
-  int analogValue = digitalRead(inputPin);
+  int inputValue = digitalRead(inputPin);
 
   // --- Key pressed ---
-  if (analogValue > 10) {
+  if (inputValue > 10) {
     signalOnTime++;
     if (signalOnTime == 1) {
       lastPauseDuration = signalOffTime;
@@ -65,7 +65,7 @@ void trackSignal() {
   }
 
   // --- Key released ---
-  if (analogValue <= 10) {
+  if (inputValue <= 10) {
     signalOffTime++;
     if (signalOffTime == 1) {
       lastPressDuration = signalOnTime;
