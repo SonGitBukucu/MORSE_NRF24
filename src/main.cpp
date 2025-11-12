@@ -1,10 +1,21 @@
 /*
+PROJEDE KÖKLÜ DEĞİŞİKLİKLER YAPMAK MUHTEMEL. BU DURUMDA BU KOD GEREKSİZ BİR DURUMDA KALABİLİR
+*/
+
+
+
+
+
+/*
  * Morse Code Receiver (No Display)
  * Reads Morse key input and prints decoded characters via Serial
  */
 #include <Arduino.h>
 #include <TimerOne.h>
 #include <Adafruit_SSD1306.h>
+#include <SPI.h>
+#include <RF24.h>
+#include <nRF24L01.h>
 // === Pin and timing variables ===
 const byte inputPin = 9;       // Analog input from telegraph key or radio output
 
